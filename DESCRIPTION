@@ -1,0 +1,17 @@
+Package: EMG
+Maintainer: Kevin Middleton <middletonk@missouri.edu>
+License: GPL-2
+Title: EMG Analysis in R
+LazyData: yes
+Type: Package
+LazyLoad: yes
+Author: Kevin Middleton
+Description: EMG Analysis in R
+Depends:
+    R (>= 3.0),
+    audio,
+    seewave,
+    tuneR
+Version: 0.0.1
+Date: 2013-11-11
+Collate:
