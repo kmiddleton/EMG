@@ -1,23 +1,29 @@
 ##' Convert wave file into single channel EMG file.
-##'
-##' Details go here.
 ##' 
-##' @title Convert wav to EMG
+##' This function takes as imput an audio wave file read in using the
+##' readWave function from the \code{\link{tuneR}} package. The
+##' returned wave has print and plot methods. By default, plotting
+##' reduces the number of points to 1/10 of the original wave using
+##' the \code{downsample} parameter.
 ##' 
-##' @param wave An audio wave file read in by readWave().
-##' 
-##' @return Vector of class "EMG". Class "EMG" has print and plot
+##' @title Convert wave of class \code{"Wave"} to EMG vector of class
+##'   \code{"EMG"}.
+##'   
+##' @param wave An audio wave of class \code{"Wave"} read in by
+##'   \code{\link{readWave}}.
+##'   
+##' @return Vector of class "EMG". Class "EMG" has print and plot 
 ##'   methods.
-##' 
+##'   
 ##' @author Kevin Middleton (middletonk@@missouri.edu)
-##' 
+##'   
 ##' @seealso \code{\link{readWave}}
-##' 
+##'   
 ##' @export
 ##' 
 ##' @S3method print EMG
 ##' @S3method plot EMG
-##' 
+##'   
 ##' @examples
 ##' wav <- readWave(system.file("extdata",
 ##'                             "wav_file.wav",
