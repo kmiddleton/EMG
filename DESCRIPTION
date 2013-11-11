@@ -12,7 +12,8 @@ Depends:
     audio,
     seewave,
     tuneR
-Version: 0.0.1
+Version: 0.0.2
 Date: 2013-11-11
 Collate:
     'as.EMG.R'
+    'read.EMG.R'
