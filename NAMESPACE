@@ -1,0 +1,3 @@
+S3method(plot,EMG)
+S3method(print,EMG)
+export(as.EMG)
