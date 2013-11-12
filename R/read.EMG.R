@@ -1,11 +1,13 @@
 ##' Read EMG file.
 ##'
-##' This function reads in a wave file and converts to and \code{"EMG"} class vector.
+##' This function reads in a wave file and converts to and
+##' \code{"EMG"} class vector.
 ##' 
 ##' @title Read EMG File
 ##' 
 ##' @param filename File name to be read
-##' @param ... Additional parameters passed along to \code{\link{readWave}}.
+##' @param ... Additional parameters passed along to
+##'   \code{\link{readWave}}.
 ##' 
 ##' @return Wave of class \code{"EMG"}.
 ##' 

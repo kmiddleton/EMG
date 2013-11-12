@@ -1,15 +1,15 @@
 ##' Convert wave file into single channel EMG file.
 ##' 
-##' This function takes as imput an audio wave file read in using the
-##' readWave function from the \code{\link{tuneR}} package. The
-##' returned wave has print and plot methods. By default, plotting
-##' reduces the number of points to 1/10 of the original wave using
+##' This function takes as imput an audio wave file read in using the 
+##' readWave function from the \code{\link{tuneR}} package. The 
+##' returned wave has print and plot methods. By default, plotting 
+##' reduces the number of points to 1/10 of the original wave using 
 ##' the \code{downsample} parameter.
 ##' 
-##' @title Convert wave of class \code{"Wave"} to EMG vector of class
+##' @title Convert wave of class \code{"Wave"} to EMG vector of class 
 ##'   \code{"EMG"}.
 ##'   
-##' @param wave An audio wave of class \code{"Wave"} read in by
+##' @param wave An audio wave of class \code{"Wave"} read in by 
 ##'   \code{\link{readWave}}.
 ##'   
 ##' @return Vector of class "EMG". Class "EMG" has print and plot 
