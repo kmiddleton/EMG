@@ -2,10 +2,16 @@
 \alias{read.EMG}
 \title{Read EMG File}
 \usage{
-  read.EMG(filename, ...)
+  read.EMG(filename, downsample = TRUE, samp.rate = 10000,
+    ...)
 }
 \arguments{
   \item{filename}{File name to be read}
+
+  \item{downsample}{Should the wave be downsampled.}
+
+  \item{samp.rate}{The sample rate for downsampling.
+  Defaults to 10000 Hz.}
 
   \item{...}{Additional parameters passed along to
   \code{\link{readWave}}.}
