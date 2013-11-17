@@ -6,6 +6,9 @@
 ##' @title Read EMG File
 ##' 
 ##' @param filename File name to be read
+##' @param downsample Should the wave be downsampled.
+##' @param samp.rate The sample rate for downsampling. Defaults to
+##'   10000 Hz.
 ##' @param ... Additional parameters passed along to
 ##'   \code{\link{readWave}}.
 ##' 
@@ -22,8 +25,13 @@
 ##'                           "wav_file.wav",
 ##'                           package = "EMG"))
 ##' str(y)
-read.EMG <- function(filename, ...){
+read.EMG <- function(filename,
+                     downsample = TRUE,
+                     samp.rate = 10000, ...){
   x <- readWave(filename, ...)
+  if (downsample){
+    x <- downsample(x, samp.rate = samp.rate)
+  }
   x <- as.EMG(x)
   return(x)
 }
