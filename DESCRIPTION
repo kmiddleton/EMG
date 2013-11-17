@@ -1,6 +1,6 @@
 Package: EMG
 Maintainer: Kevin Middleton <middletonk@missouri.edu>
-License: GPL-2
+License: file LICENSE
 Title: EMG Analysis in R
 LazyData: yes
 Type: Package
@@ -12,9 +12,10 @@ Depends:
     audio,
     seewave,
     tuneR
-Version: 0.0.2
-Date: 2013-11-11
+Version: 0.0.3
+Date: 2013-11-17
 Collate:
     'as.EMG.R'
     'read.EMG.R'
     'power.spectrum.R'
+    'datasets.R'

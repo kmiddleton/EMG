@@ -1,0 +1,28 @@
+\docType{data}
+\name{amp_off}
+\alias{amp_off}
+\title{Amplifier Off}
+\format{A \code{\link{Wave-class}} object of EMG (audio) data
+  recorded with the amplifier off. Useful for checking noise in
+  the recording system.
+\tabular{ll}{ Number of Samples: \tab 76288\cr
+              Duration (seconds): \tab 1.73\cr
+              Samplingrate (Hertz): \tab 44100\cr
+              Channels (Mono/Stereo): \tab Mono\cr
+              PCM (integer format): \tab TRUE\cr
+              Bit (8/16/24/32/64): \tab 16}}
+\source{
+  Recorded by Kevin Middleton.
+}
+\description{
+  File recorded with the Backyard Brains EMG SpikerBox off.
+}
+\examples{
+amp_off
+plot(amp_off)
+}
+\references{
+  Backyard Brains \url{https://backyardbrains.com/}
+}
+\keyword{datasets}
+
