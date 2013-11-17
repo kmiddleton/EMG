@@ -57,3 +57,105 @@ NULL
 ##' 
 NULL
 
+
+##' Amplifier On Baseline
+##' 
+##' File recorded with the Backyard Brains EMG SpikerBox on with 
+##' surface elecrodes on the biceps brachii to determine baseline
+##' noise.
+##' 
+##' @name amp_on_baseline
+##' 
+##' @docType data
+##' 
+##' @format A \code{\link{Wave-class}} object of EMG (audio) data 
+##'   recorded with the amplifier on and surface electrodes connected
+##'   to the biceps brachii.
+##' \tabular{ll}{ Number of Samples: \tab 60928\cr 
+##'               Duration (seconds): \tab 1.38\cr 
+##'               Samplingrate (Hertz): \tab 44100\cr 
+##'               Channels (Mono/Stereo): \tab Mono\cr 
+##'               PCM (integer format): \tab TRUE\cr 
+##'               Bit (8/16/24/32/64): \tab 16}
+##' 
+##' @references Backyard Brains \url{https://backyardbrains.com/}
+##' 
+##' @source Recorded by Kevin Middleton.
+##' 
+##' @keywords datasets
+##' 
+##' @examples
+##' 
+##' amp_on_baseline
+##' plot(amp_on_baseline)
+##' 
+NULL
+
+
+##' Submaximal Contractions
+##' 
+##' File recorded with the Backyard Brains EMG SpikerBox on with 
+##' surface elecrodes on the biceps brachii with a series of
+##' submaximal contractions.
+##' 
+##' @name pulse_1
+##' 
+##' @docType data
+##' 
+##' @format A \code{\link{Wave-class}} object of EMG (audio) data 
+##'   recorded with the amplifier on and surface electrodes connected
+##'   to the biceps brachii.
+##' \tabular{ll}{ Number of Samples: \tab 94208\cr 
+##'               Duration (seconds): \tab 2.14\cr 
+##'               Samplingrate (Hertz): \tab 44100\cr 
+##'               Channels (Mono/Stereo): \tab Mono\cr 
+##'               PCM (integer format): \tab TRUE\cr 
+##'               Bit (8/16/24/32/64): \tab 16}
+##' 
+##' @references Backyard Brains \url{https://backyardbrains.com/}
+##' 
+##' @source Recorded by Kevin Middleton.
+##' 
+##' @keywords datasets
+##' 
+##' @examples
+##' 
+##' pulse_1
+##' plot(pulse_1)
+##' 
+NULL
+
+
+##' Maximal Contractions
+##' 
+##' File recorded with the Backyard Brains EMG SpikerBox on with 
+##' surface elecrodes on the biceps brachii with a series of
+##' maximal contractions.
+##' 
+##' @name pulse_max
+##' 
+##' @docType data
+##' 
+##' @format A \code{\link{Wave-class}} object of EMG (audio) data 
+##'   recorded with the amplifier on and surface electrodes connected
+##'   to the biceps brachii.
+##' \tabular{ll}{ Number of Samples: \tab 70144\cr 
+##'               Duration (seconds): \tab 1.59\cr 
+##'               Samplingrate (Hertz): \tab 44100\cr 
+##'               Channels (Mono/Stereo): \tab Mono\cr 
+##'               PCM (integer format): \tab TRUE\cr 
+##'               Bit (8/16/24/32/64): \tab 16}
+##' 
+##' @references Backyard Brains \url{https://backyardbrains.com/}
+##' 
+##' @source Recorded by Kevin Middleton.
+##' 
+##' @keywords datasets
+##' 
+##' @examples
+##' 
+##' pulse_max
+##' plot(pulse_max)
+##' 
+NULL
+

@@ -1,0 +1,30 @@
+\docType{data}
+\name{pulse_max}
+\alias{pulse_max}
+\title{Maximal Contractions}
+\format{A \code{\link{Wave-class}} object of EMG (audio) data
+  recorded with the amplifier on and surface electrodes connected
+  to the biceps brachii.
+\tabular{ll}{ Number of Samples: \tab 70144\cr
+              Duration (seconds): \tab 1.59\cr
+              Samplingrate (Hertz): \tab 44100\cr
+              Channels (Mono/Stereo): \tab Mono\cr
+              PCM (integer format): \tab TRUE\cr
+              Bit (8/16/24/32/64): \tab 16}}
+\source{
+  Recorded by Kevin Middleton.
+}
+\description{
+  File recorded with the Backyard Brains EMG SpikerBox on
+  with surface elecrodes on the biceps brachii with a
+  series of maximal contractions.
+}
+\examples{
+pulse_max
+plot(pulse_max)
+}
+\references{
+  Backyard Brains \url{https://backyardbrains.com/}
+}
+\keyword{datasets}
+
