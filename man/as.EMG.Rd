@@ -25,7 +25,7 @@
 }
 \examples{
 wav <- readWave(system.file("extdata",
-                            "wav_file.wav",
+                            "pulse_1.wav",
                             package = "EMG"))
 y <- as.EMG(wav)
 str(y)

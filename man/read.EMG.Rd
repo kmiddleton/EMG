@@ -27,10 +27,10 @@
   \code{"EMG"} class vector.
 }
 \examples{
-y <- read.EMG(system.file("extdata",
-                          "wav_file.wav",
-                          package = "EMG"))
-str(y)
+pulse <- read.EMG(system.file("extdata",
+                              "pulse_1.wav",
+                              package = "EMG"))
+str(pulse)
 }
 \author{
   Kevin Middleton (middletonk@missouri.edu)

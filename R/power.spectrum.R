@@ -20,10 +20,10 @@
 ##' @export
 ##' 
 ##' @examples
-##' y <- read.EMG(system.file("extdata",
-##'                           "pulse_1.wav",
-##'                           package = "EMG"))
-##' power.spectrum(y)
+##' pulse <- read.EMG(system.file("extdata",
+##'                               "pulse_1.wav",
+##'                               package = "EMG"))
+##' power.spectrum(pulse)
 ##' 
 ##' no_signal <- read.EMG(system.file("extdata",
 ##'                                   "amp_on_baseline.wav",

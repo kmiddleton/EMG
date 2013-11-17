@@ -21,10 +21,10 @@
 ##' @export
 ##' 
 ##' @examples
-##' y <- read.EMG(system.file("extdata",
-##'                           "wav_file.wav",
-##'                           package = "EMG"))
-##' str(y)
+##' pulse <- read.EMG(system.file("extdata",
+##'                               "pulse_1.wav",
+##'                               package = "EMG"))
+##' str(pulse)
 read.EMG <- function(filename,
                      downsample = TRUE,
                      samp.rate = 10000, ...){
