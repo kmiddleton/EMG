@@ -3,11 +3,17 @@
 \title{Convert wave of class \code{"Wave"} to EMG vector of class
   \code{"EMG"}.}
 \usage{
-  as.EMG(wave, downsample = TRUE, samp.rate = 11025)
+  as.EMG(wave, downsample = TRUE, samp.freq = 11025)
 }
 \arguments{
   \item{wave}{An audio wave of class \code{"Wave"} read in
   by \code{\link{readWave}}.}
+
+  \item{downsample}{logical. If \code{TRUE} (default), then
+  the wave will be downsampled to \code{samp.freq}.}
+
+  \item{samp.freq}{numeric. The new sample frequency.
+  Defaults to 11025.}
 }
 \value{
   Vector of class "EMG". Class "EMG" has print and plot

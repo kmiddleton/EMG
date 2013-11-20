@@ -3,17 +3,14 @@
 ##' @title Power Spectrum
 ##' 
 ##' @param y An object of class \code{"EMG"} or \code{"Wave"}.
-##' @param freq The recording frequency. Defaults to 10000 Hz.
-##' @param width Width of the window to use for periodogram. See
-##'   \code{\link{periodogram}} for additional information. Defaults
-##'   to 4096.
-##' @param frqRange Frequency range for periodogram. Defaults to -Inf
-##'   to 1000 Hz.
-##' @param ... Additional parameters passed to
-##'   \code{\link{periodogram}} or \code{\link{FF}}
+##' @param samp.freq The recording frequency. Defaults to 11025 Hz.
+##' @param plot logical. Should the power spectrum be plotted?
+##'   Defaults to \code{TRUE}.
+##' @param plot_range numeric vector. The range for plotting. Defaults
+##'   to 0 to samp.freq / 2.
 ##' 
-##' @return A list containing the outputs of \code{\link{periodogram}}
-##'   and \code{\link{FF}}
+##' @return A \code{data.frame} containing the \code{intensity} at
+##'   each \code{frequency} from 0 to \code{samp.freq / 2}.
 ##' 
 ##' @author Kevin Middleton (middletonk@@missouri.edu)
 ##' 
@@ -30,24 +27,49 @@
 ##'                                   package = "EMG"))
 ##' power.spectrum(no_signal)
 power.spectrum <- function(y,
-                           freq = 10000,
-                           width = 4096,
-                           frqRange = c(-Inf, 1000),
-                           ...){
-  # If y is an EMG, convert to wave
-  if (inherits(y, "EMG")) {
-    y_wave <- Wave(left = unclass(y), samp.rate = freq, bit = 16)
-  }
-  
+                           samp.freq = 11025,
+                           plot = TRUE,
+                           plot_range = NULL){
   if (inherits(y, "Wave")) {
-    y_wave <- y
+    message("Converting y to class EMG")
+    y <- as.EMG(y, samp.freq = samp.freq)
   }
   
-  Wspecobj<- tuneR::periodogram(y_wave, width = 4096,
-                                frqRange = frqRange, ...)
-  plot(Wspecobj)
+  # Check that y is of class EMG
+  if (!inherits(y, "EMG")) {
+    stop("y should be class 'EMG'.")
+  }
   
-  FFobj <- FF(Wspecobj)
+  # See http://tolstoy.newcastle.edu.au/R/help/05/08/11270.html
+  Y <- fft(as.numeric(y))
   
-  return(list(Wspec = Wspecobj, FF = FFobj))
+  ## Find the sample period
+  delta <- 1/samp.freq
+  
+  ## Calculate the Nyquist frequency
+  f.Nyquist <- 1 / 2 / delta
+  
+  ## Calculate the frequencies
+  Freqs <- f.Nyquist * c(seq(length(y)/2),
+                         -rev(seq(length(y)/2)))/(length(y)/2)
+  
+  out <- data.frame(frequency = Freqs, power = Mod(Y))
+  out <- out[out$frequency >= 0, ]
+  
+  if (plot){
+    if (is.null(plot_range)){
+      xlow <- 0
+      xhigh <- samp.freq / 2
+    } else {
+      xlow <- plot_range[1]
+      xhigh <- plot_range[2]
+    }
+    p <- ggplot(out, aes(x = frequency, y = power)) + geom_line() +
+      xlab("Frequency (Hz)") + ylab("Intensity") +
+      xlim(xlow, xhigh) +
+      scale_y_continuous(label = scientific_10)
+    suppressWarnings(print(p))
+  }
+
+  return(out)
 }

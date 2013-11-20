@@ -2,29 +2,25 @@
 \alias{power.spectrum}
 \title{Power Spectrum}
 \usage{
-  power.spectrum(y, freq = 10000, width = 4096,
-    frqRange = c(-Inf, 1000), ...)
+  power.spectrum(y, samp.freq = 11025, plot = TRUE,
+    plot_range = NULL)
 }
 \arguments{
   \item{y}{An object of class \code{"EMG"} or
   \code{"Wave"}.}
 
-  \item{freq}{The recording frequency. Defaults to 10000
-  Hz.}
+  \item{samp.freq}{The recording frequency. Defaults to
+  11025 Hz.}
 
-  \item{width}{Width of the window to use for periodogram.
-  See \code{\link{periodogram}} for additional information.
-  Defaults to 4096.}
+  \item{plot}{logical. Should the power spectrum be
+  plotted?  Defaults to \code{TRUE}.}
 
-  \item{frqRange}{Frequency range for periodogram. Defaults
-  to -Inf to 1000 Hz.}
-
-  \item{...}{Additional parameters passed to
-  \code{\link{periodogram}} or \code{\link{FF}}}
+  \item{plot_range}{numeric vector. The range for plotting.
+  Defaults to 0 to samp.freq / 2.}
 }
 \value{
-  A list containing the outputs of
-  \code{\link{periodogram}} and \code{\link{FF}}
+  A \code{data.frame} containing the \code{intensity} at
+  each \code{frequency} from 0 to \code{samp.freq / 2}.
 }
 \description{
   Calculate and plot power spectrum for a wave.

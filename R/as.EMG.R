@@ -11,6 +11,10 @@
 ##'   
 ##' @param wave An audio wave of class \code{"Wave"} read in by 
 ##'   \code{\link{readWave}}.
+##' @param downsample logical. If \code{TRUE} (default), then the wave
+##'   will be downsampled to \code{samp.freq}.
+##' @param samp.freq numeric. The new sample frequency. Defaults to
+##'   11025.
 ##'   
 ##' @return Vector of class "EMG". Class "EMG" has print and plot 
 ##'   methods.
@@ -32,7 +36,7 @@
 ##' str(y)
 as.EMG <- function(wave,
                    downsample = TRUE,
-                   samp.rate = 11025){
+                   samp.freq = 11025){
   if (!inherits(wave, "Wave")) {
     stop('object "wave" is not of class "Wave".')
   }
@@ -40,7 +44,11 @@ as.EMG <- function(wave,
   x <- as.numeric(wave@left)
   
   if (downsample){
-    x <- x[seq(1, length(x), by = 44100/samp.rate)]
+    if (44100 %% samp.freq != 0){
+      stop("samp.freq should divide evenly into 44100.\n
+           Try 11025 or 22050.")
+    }
+    x <- x[seq(1, length(x), by = 44100/samp.freq)]
   }
   
   class(x) <- "EMG"
@@ -51,7 +59,7 @@ print.EMG <- function(x, digits = 4, ...){
   print(x, digits = digits, ...)
 }
 
-plot.EMG <- function(x, downsample = 10,
+plot.EMG <- function(x, downsample = 5,
                      type = "l",
                      ...){
   if (!inherits(x, "EMG")) {
@@ -61,4 +69,8 @@ plot.EMG <- function(x, downsample = 10,
   obs_to_keep <- seq(from = 1, to = length(x), by = downsample)
   x_down <- x[obs_to_keep]
   plot(x_down, type = type, ...)
+}
+
+scientific_10 <- function(x) {
+  parse(text=gsub("e", " %*% 10^", scientific_format()(x)))
 }

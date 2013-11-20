@@ -10,10 +10,12 @@ Description: EMG Analysis in R
 Depends:
     R (>= 3.0),
     audio,
+    ggplot2,
+    scales,
     seewave,
     tuneR
-Version: 0.0.3
-Date: 2013-11-17
+Version: 0.0.4
+Date: 2013-11-20
 Collate:
     'as.EMG.R'
     'read.EMG.R'
