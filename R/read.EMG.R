@@ -27,11 +27,14 @@
 ##' str(pulse)
 read.EMG <- function(filename,
                      downsample = TRUE,
-                     samp.rate = 10000, ...){
+                     samp.rate = 11025, ...){
+  
   x <- readWave(filename, ...)
+  
   if (downsample){
-    x <- downsample(x, samp.rate = samp.rate)
+    x <- x[seq(1, length(x), by = 44100/samp.rate)]
   }
+  
   x <- as.EMG(x)
   return(x)
 }

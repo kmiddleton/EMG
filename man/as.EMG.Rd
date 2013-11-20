@@ -3,7 +3,7 @@
 \title{Convert wave of class \code{"Wave"} to EMG vector of class
   \code{"EMG"}.}
 \usage{
-  as.EMG(wave)
+  as.EMG(wave, downsample = TRUE, samp.rate = 11025)
 }
 \arguments{
   \item{wave}{An audio wave of class \code{"Wave"} read in

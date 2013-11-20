@@ -2,7 +2,7 @@
 \alias{read.EMG}
 \title{Read EMG File}
 \usage{
-  read.EMG(filename, downsample = TRUE, samp.rate = 10000,
+  read.EMG(filename, downsample = TRUE, samp.rate = 11025,
     ...)
 }
 \arguments{

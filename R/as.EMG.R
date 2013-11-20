@@ -30,12 +30,19 @@
 ##'                             package = "EMG"))
 ##' y <- as.EMG(wav)
 ##' str(y)
-as.EMG <- function(wave){
+as.EMG <- function(wave,
+                   downsample = TRUE,
+                   samp.rate = 11025){
   if (!inherits(wave, "Wave")) {
     stop('object "wave" is not of class "Wave".')
   }
 
   x <- as.numeric(wave@left)
+  
+  if (downsample){
+    x <- x[seq(1, length(x), by = 44100/samp.rate)]
+  }
+  
   class(x) <- "EMG"
   return(x)
 }
