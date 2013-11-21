@@ -37,10 +37,15 @@
 as.EMG <- function(wave,
                    downsample = TRUE,
                    samp.freq = 11025){
-  if (!inherits(wave, "Wave")) {
-    stop('object "wave" is not of class "Wave".')
-  }
 
+  # If wave isn't a Wave, then make it a wave
+  if (is.vector(wave)){
+    wave <- Wave(left = wave,
+                 right = numeric(0),
+                 samp.rate = samp.freq,
+                 bit = 16, pcm = TRUE)
+  }
+  
   x <- as.numeric(wave@left)
   
   if (downsample){
