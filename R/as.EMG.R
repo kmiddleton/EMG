@@ -57,6 +57,7 @@ as.EMG <- function(wave,
   }
   
   class(x) <- "EMG"
+  attr(x, 'samp.freq') <- samp.freq
   return(x)
 }
 
