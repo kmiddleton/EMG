@@ -61,7 +61,8 @@ as.EMG <- function(wave,
 }
 
 print.EMG <- function(x, digits = 4, ...){
-  print(x, digits = digits, ...)
+  print(head(pulse))
+  print(paste("Samples:", length(x)))
 }
 
 plot.EMG <- function(x, downsample = 5,
