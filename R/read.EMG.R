@@ -35,6 +35,6 @@ read.EMG <- function(filename,
     x <- x[seq(1, length(x), by = 44100/samp.rate)]
   }
   
-  x <- as.EMG(x)
+  x <- as.EMG(x, samp.rate)
   return(x)
 }
