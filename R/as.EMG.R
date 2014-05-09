@@ -35,8 +35,8 @@
 ##' y <- as.EMG(wav)
 ##' str(y)
 as.EMG <- function(wave,
-                   downsample = TRUE,
-                   samp.freq = 11025){
+                   downsample = FALSE,
+                   samp.freq){
 
   # If wave isn't a Wave, then make it a wave
   if (is.vector(wave)){
@@ -46,24 +46,31 @@ as.EMG <- function(wave,
                  bit = 16, pcm = TRUE)
   }
   
-  x <- as.numeric(wave@left)
+  # Extract left channel as EMG signal.
+  y <- as.numeric(wave@left)
+  
+  # Construct x time vector
+  x <- (1:length(y))/samp.freq
   
   if (downsample){
     if (44100 %% samp.freq != 0){
       stop("samp.freq should divide evenly into 44100.\n
            Try 11025 or 22050.")
     }
+    y <- y[seq(1, length(y), by = 44100/samp.freq)]
     x <- x[seq(1, length(x), by = 44100/samp.freq)]
   }
   
-  class(x) <- "EMG"
-  attr(x, 'samp.freq') <- samp.freq
-  return(x)
+  # Make out data.frame
+  dd <- data.frame(x, y)
+  
+  class(dd) <- "EMG"
+  attr(dd, 'samp.freq') <- samp.freq
+  return(dd)
 }
 
 print.EMG <- function(x, digits = 4, ...){
-  print(head(pulse))
-  print(paste("Samples:", length(x)))
+  print(paste("Samples:", length(x$x)))
 }
 
 plot.EMG <- function(x, downsample = 5,
@@ -73,9 +80,14 @@ plot.EMG <- function(x, downsample = 5,
     stop('object "x" is not of class "EMG".')
   }
   
-  obs_to_keep <- seq(from = 1, to = length(x), by = downsample)
-  x_down <- x[obs_to_keep]
-  plot(x_down, type = type, ...)
+  y_to_keep <- seq(from = 1, to = length(x$y), by = downsample)
+  x_to_keep <- seq(from = 1, to = length(x$x), by = downsample)
+  y_down <- x$y[y_to_keep]
+  x_down <- x$x[x_to_keep]
+  plot(x_down, y_down, type = type, 
+       ylab = "V",
+       xlab = "time (s)",
+       ...)
 }
 
 scientific_10 <- function(x) {
