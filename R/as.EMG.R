@@ -84,10 +84,12 @@ plot.EMG <- function(x, downsample = 5,
   x_to_keep <- seq(from = 1, to = length(x$x), by = downsample)
   y_down <- x$y[y_to_keep]
   x_down <- x$x[x_to_keep]
-  plot(x_down, y_down, type = type, 
-       ylab = "V",
-       xlab = "time (s)",
-       ...)
+  
+  p <- ggplot(data.frame(x_down, y_down), aes(x_down, y_down)) +
+    geom_line() +
+    xlab("Time (s)") +
+    ylab("V")
+  print(p)
 }
 
 scientific_10 <- function(x) {
